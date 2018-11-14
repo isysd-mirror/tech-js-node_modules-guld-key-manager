@@ -1,8 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, StatusBar, TouchableOpacity } from "react-native";
 import { Router, Switch, Link, Route } from './Routing';
-//import { Opticons } from '@expo/vector-icons';
-import Opticons from 'react-native-vector-icons'
 
 export default class App extends React.Component {
 
