@@ -1,6 +1,9 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, StatusBar, TouchableOpacity } from "react-native";
-import { Router, Switch, Link, Route } from './Routing';
+import { View, Image, StyleSheet, StatusBar, Text } from "react-native";
+import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+//import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+//import * as pgp from 'keyring-pgp'
+//import * as gpg from 'keyring-gpg'
 
 export default class App extends React.Component {
 
@@ -16,6 +19,7 @@ export default class App extends React.Component {
                         <Route exact path="/" component={Home} />
                         <Route path="/generate" component={Generate} />
                         <Route path="/import" component={Import} />
+                        <Route path="/options" component={Options} />
                     </Switch>
                 </Router>
             </View>
@@ -30,7 +34,7 @@ export class Loading extends React.Component {
                     <Image
                         style={[styles.menuImage]}
                         resizeMode={"contain"}
-                        source={require("./Pictures/guld/logo/logo.svg")}
+                        source={require("../assets/images/logo.svg")}
                     />
             </View>
         );
@@ -41,15 +45,21 @@ export class AppNav extends React.Component {
     render() {
         return (
             <View style={{ alignItems: 'center', flex: 3 }}>
-                <Link to={'/'} component={TouchableOpacity}>
+                <Link to={'/'}>
                     <Image
                         style={[styles.menuImage]}
                         resizeMode={"contain"}
-                        source={require("./Pictures/guld/logo/ico.svg")}
+                        source={require("../assets/images/ico.svg")}
                     />
                 </Link>
-                <Link to={'/generate'} component={TouchableOpacity}>
-                    <Opticons name="plus" size={32} color="#D0B460" />
+                <Link to={'/generate'}>
+                    <Text>Generate</Text>
+                </Link>
+                <Link to={'/import'}>
+                    <Text>Import</Text>
+                </Link>
+                <Link to={'/options'}>
+                    <Text>Options</Text>
                 </Link>
             </View>
         )
@@ -60,8 +70,6 @@ export class Home extends React.Component {
     render() {
         return (
             <View style={{ alignItems: 'center', flex: 3 }}>
-                <Text style={styles.appTitle}>Guld Key Manager</Text>
-                <Text style={styles.appSubtitle}>Multi-platform app</Text>
                 <AppNav></AppNav>
             </View>
         );
@@ -89,33 +97,26 @@ export class Import extends React.Component {
     }
 }
 
+export class Options extends React.Component {
+    render() {
+        return (
+            <View style={{ alignItems: 'center', flex: 3 }}>
+                <AppNav></AppNav>
+            </View>
+        )
+    }
+}
+
 const styles = StyleSheet.create({
     app: {
         backgroundColor: "#222",
+        justifyContent: "center",
+        alignItems: "center",
         flex: 1
     },
-    appHeader: {
-        flex: 1,
-        padding: 20,
-        justifyContent: "center",
-        alignItems: "center"
-    },
     menuImage: {
-        width: 100,
-        height: 100,
+        width: 50,
+        height: 50,
         flex: 3
-    },
-    appTitle: {
-        flex: 1,
-        fontSize: 16,
-        color: "white"
-    },
-    appSubtitle: {
-        color: "white"
-    },
-    appIntro: {
-        flex: 3,
-        fontSize: 30,
-        textAlign: "center"
     }
 });
