@@ -36,3 +36,4 @@ src/tech
 assets
 package.json.broke
 *.exp
+.idea

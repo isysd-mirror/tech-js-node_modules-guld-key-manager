@@ -36,11 +36,21 @@ const babelLoaderConfiguration = {
       plugins: [
         'expo-web',
         'react-native-web',
-        'transform-decorators-legacy',
-        ['transform-runtime', { helpers: false, polyfill: false, regenerator: true }],
+        'transform-react-jsx',
+//        'transform-decorators-legacy',
+//        ['transform-runtime', { helpers: false, polyfill: false, regenerator: true }],
+        [
+          'babel-plugin-module-resolver',
+          {
+            alias: {
+              'react-native-vector-icons': '@expo/vector-icons',
+            },
+          },
+        ],
+        ['@babel/plugin-proposal-decorators', { legacy: true }]
       ],
       // The 'react-native' preset is recommended to match React Native's packager
-      presets: ['react-native'],
+      presets: ['module:metro-react-native-babel-preset'],
     },
   },
 };
@@ -115,8 +125,6 @@ module.exports = {
     symlinks: false,
     extensions: ['.web.js', '.js'],
     alias: {
-      './assets/images/expo-icon.png': './assets/images/expo-icon@2x.png',
-      './assets/images/slack-icon.png': './assets/images/slack-icon@2x.png',
       '@expo/vector-icons': 'expo-web',
       expo: 'expo-web',
       'react-native': 'react-native-web',
