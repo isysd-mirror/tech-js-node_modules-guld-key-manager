@@ -1,6 +1,4 @@
-import {StyleSheet, StatusBar} from 'react-native';
-
-export default StyleSheet.create({
+export default {
   app: {
     backgroundColor: "grey",
     color: "#111",
@@ -10,7 +8,7 @@ export default StyleSheet.create({
     flex: 1
   },
   statusBarBackground: {
-    height: StatusBar.currentHeight || 18,
+    height: 0,
     backgroundColor: "white"
   },
   navbarIcon: {
@@ -40,4 +38,4 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignSelf: 'stretch'
   }
-});
+}

@@ -28,29 +28,7 @@ const babelLoaderConfiguration = {
   use: {
     loader: 'babel-loader',
     options: {
-      // cacheDirectory: false,
-      babelrc: false,
-      // Babel configuration (or use .babelrc)
-      // This aliases 'react-native' to 'react-native-web' and includes only
-      // the modules needed by the app.
-      plugins: [
-        'expo-web',
-        'react-native-web',
-        'transform-react-jsx',
-//        'transform-decorators-legacy',
-//        ['transform-runtime', { helpers: false, polyfill: false, regenerator: true }],
-        [
-          'babel-plugin-module-resolver',
-          {
-            alias: {
-              'react-native-vector-icons': '@expo/vector-icons',
-            },
-          },
-        ],
-        ['@babel/plugin-proposal-decorators', { legacy: true }]
-      ],
-      // The 'react-native' preset is recommended to match React Native's packager
-      presets: ['module:metro-react-native-babel-preset'],
+      babelrc: true
     },
   },
 };

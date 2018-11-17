@@ -1,60 +1,55 @@
 import React from "react";
-import { View, Image, StatusBar, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput } from "./rn";
 import { observer } from 'mobx-react';
 import styles from './styles'
 
 @observer
 export default class HybridApp extends React.Component {
 
-  NavBar = () => {
-    let searchtext = this.props.location
+  NavBar () {
+    let searchtext = '/'
     return (
-      <View style={styles.header} >
-        <Text style={{color: '#111'}}>&#x2039;</Text>
-        <Text style={{color: '#111'}}>&#x203A;</Text>
-        <View style={styles.navbar} >
-          <TextInput onChangeText = { text => { searchtext = text }}
-            onSubmitEditing = {() => this.props.push(searchtext)}
-            placeholder = "/"
-            style = {{borderWidth: 1, borderColor: '#111', color: '#111'}}
-          />
+      <View>
+        <Text>&#x2039;</Text>
+        <Text>&#x203A;</Text>
+        <View>
+          <TextInput onChange = { text => { searchtext = text }} >
+            {searchtext}
+          </TextInput>
         </View>
-        <Image source = {{
-            uri: "https://distressed.digital/Pictures/isysd/profile.jpg"
-          }}
-        />
       </View>
     )
   }
 
-  Home = () => {
+  Home () {
     return (
-      <View style = {styles.content} >
+      <View>
         <Text> Home </Text>
       </View>
     )
   }
 
-  Options = () => {
+  Options () {
     return (
-      <View style = {styles.content} >
+      <View>
         <Text> Options </Text>
       </View>
     )
   }
 
-  Catchall = () => {
+  Catchall () {
     return (
-      <View style = {styles.content} >
+      <View>
         <Text> </Text>
       </View>
     )
   }
 
-  render() {
+  render () {
+    // StyleSheet.absoluteFill replacement
     return (
-      <View style = {StyleSheet.absoluteFill} >
-        <View style={styles.statusBarBackground}></View>
+      <View>
+        <View></View>
         <this.NavBar />
         <this.Home />
       </View>
